@@ -51,8 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const trigger = item.querySelector('.timeline-trigger');
         trigger.addEventListener('click', () => {
             const currentlyOpen = item.classList.contains('is-open');
-            timelineItems.forEach(i => { if (i !== item) { i.classList.remove('is-open'); } });
-            item.classList.toggle('is-open');
+            // This loop makes it so only one item can be open at a time
+            timelineItems.forEach(i => { i.classList.remove('is-open'); });
+            if (!currentlyOpen) {
+                item.classList.add('is-open');
+            }
         });
     });
 

@@ -15,6 +15,28 @@ body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; heigh
 .reflection-effect::after { content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%); transform: skewX(-25deg) translateX(-150%); transition: transform 1s ease; }
 .reflection-effect:hover::after { transform: skewX(-25deg) translateX(250%); }
 
+/* Header adjustments for mobile */
+@media (max-width: 767px) {
+    header .container {
+        justify-content: space-between;
+        align-items: center;
+    }
+    #lang-toggle {
+        margin-left: auto; /* Pushes the button to the right */
+    }
+    #home h2 {
+        text-align: center; /* Ensure the name is centered */
+        word-break: break-word; /* Allow long words to break */
+        padding: 0 1rem; /* Add some horizontal padding */
+        font-size: 2.5rem; /* Adjust font size for mobile */
+        line-height: 1.2;
+    }
+     #home h3 {
+        padding: 0 1rem; /* Add some horizontal padding */
+     }
+}
+
+
 /* Hero Section */
 .hexagon { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
 .hexagon-glow { position: relative; }
