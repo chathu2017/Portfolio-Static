@@ -31,19 +31,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.1 });
     sections.forEach(section => { observer.observe(section); });
 
+    // Theme Toggle
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const themeToggleIcon = themeToggleButton ? themeToggleButton.querySelector('i') : null;
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let currentTheme = localStorage.getItem('site-theme') || (prefersDark ? 'dark' : 'light');
+    currentTheme = (currentTheme === 'dark' || currentTheme === 'theme-dark') ? 'dark' : 'light';
+
+    const applyTheme = (theme) => {
+        document.body.classList.remove('theme-light', 'theme-dark');
+        const nextTheme = theme === 'dark' ? 'theme-dark' : 'theme-light';
+        document.body.classList.add(nextTheme);
+        if (themeToggleButton && themeToggleIcon) {
+            if (nextTheme === 'theme-dark') {
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+                themeToggleButton.setAttribute('aria-label', 'Switch to light theme');
+            } else {
+                themeToggleIcon.classList.remove('fa-sun');
+                themeToggleIcon.classList.add('fa-moon');
+                themeToggleButton.setAttribute('aria-label', 'Switch to dark theme');
+            }
+        }
+        currentTheme = nextTheme === 'theme-dark' ? 'dark' : 'light';
+        localStorage.setItem('site-theme', currentTheme);
+    };
+
+    applyTheme(currentTheme);
+
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+            const next = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+        });
+    }
+
     // Language Toggle
     const langToggleButton = document.getElementById('lang-toggle');
     let currentLang = 'en';
-    langToggleButton.addEventListener('click', () => {
-        currentLang = (currentLang === 'en') ? 'ko' : 'en';
-        langToggleButton.textContent = (currentLang === 'en') ? 'KO' : 'EN';
-        document.querySelectorAll('[data-en]').forEach(el => {
-            const key = currentLang;
-            if (el.dataset[key]) {
-                el.textContent = el.dataset[key];
-            }
+    if (langToggleButton) {
+        langToggleButton.addEventListener('click', () => {
+            currentLang = (currentLang === 'en') ? 'ko' : 'en';
+            langToggleButton.textContent = (currentLang === 'en') ? '한국어' : 'EN';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const key = currentLang;
+                if (el.dataset[key]) {
+                    el.textContent = el.dataset[key];
+                }
+            });
         });
-    });
+    }
 
     // Accordion for Career Journey
     const timelineItems = document.querySelectorAll('.timeline-item');

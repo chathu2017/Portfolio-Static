@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-[#0a192f]">
-    <header class="glass-effect fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold text-white">NW<span class="text-[#00f2a1]">.</span></a>
+<body class="bg-[#0a192f] theme-light">
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3">
+        <nav class="mx-auto w-11/12 max-w-6xl px-6 py-5 flex justify-between items-center rounded-xl glass-header">
+            <a href="#home" class="text-xl font-bold text-white brand-mark">NW<span class="text-[#00f2a1] brand-dot">.</span></a>
             
             <div class="flex items-center">
                 <div class="hidden md:flex items-center space-x-8">
@@ -35,7 +35,10 @@
                     <a href="https://kloudschool.com" target="_blank" class="mobile-blog-icon md:hidden">
                         <i class="fas fa-globe"></i>
                     </a>
-                    <button id="lang-toggle" class="bg-[#00f2a1] text-[#0a192f] font-bold py-1 px-3 rounded-md text-sm">KO</button>
+                    <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn flex items-center justify-center text-sm font-bold rounded-md">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="lang-toggle" class="bg-[#00f2a1] text-[#0a192f] font-bold py-1 px-3 rounded-md text-sm">한국어</button>
                 </div>
             </div>
         </nav>
@@ -50,7 +53,7 @@
             <h2 class="text-3xl sm:text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] mb-4 break-words">NIWANTHA WICKRAMASINGHA</h2>
             <h3 id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8" data-en="Cloud Engineer & Microsoft Certified Trainer" data-ko="클라우드 엔지니어 & Microsoft 공인 트레이너">Cloud Engineer & Microsoft Certified Trainer</h3>
             <div class="flex items-center space-x-6">
-                <a href="mailto:niwanthawick@outlook.com" class="bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Let's Talk" data-ko="이야기하기">Let's Talk</a>
+                <a href="mailto:niwanthawick@outlook.com" class="gradient-cta bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Let's Talk" data-ko="이야기하기">Let's Talk</a>
                 <a href="https://linkedin.com/in/niwantha-wickramasingha" target="_blank" class="text-2xl hover:text-[#00f2a1] transition-colors"><i class="fab fa-linkedin"></i></a>
             </div>
         </section>
@@ -84,19 +87,58 @@
 
         <section id="certifications" class="py-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12" data-en="Certifications" data-ko="자격증">Certifications</h2>
-             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                <div class="cert-card reflection-effect"><span>Microsoft Certified Trainer (MCT)</span></div>
-                <div class="cert-card reflection-effect"><span>Terraform Associate (003)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure Solutions Architect Expert (AZ-305)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure DevOps Engineer Expert (AZ-400)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure Virtual Desktop Specialty (AZ-140)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure Security Engineer Associate (AZ-500)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure Administrator (AZ-104)</span></div>
-                <div class="cert-card reflection-effect"><span>Teams Administrator Associate (MS-700)</span></div>
-                <div class="cert-card reflection-effect"><span>Azure Fundamental (AZ-900)</span></div>
-                <div class="cert-card reflection-effect"><span>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</span></div>
-                <div class="cert-card reflection-effect"><span>CCNA Academy (200-301)</span></div>
-                <div class="cert-card reflection-effect"><span>Google IT Support Professional</span></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- First row -->
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Azure Solutions Architect Expert.png" alt="Azure Solutions Architect Expert">
+                    <span>Azure Solutions Architect Expert</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/DevOps Engineer Expert.png" alt="DevOps Engineer Expert">
+                    <span>DevOps Engineer Expert</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Terraform Associate (003).png" alt="Terraform Associate (003)">
+                    <span>Terraform Associate (003)</span>
+                </div>
+
+                <!-- Second row -->
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Azure Administrator.png" alt="Azure Administrator Associate">
+                    <span>Azure Administrator Associate</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Azure Security Engineer Associate.png" alt="Azure Security Engineer Associate">
+                    <span>Azure Security Engineer Associate</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Azure Virtual Desktop Specialty.png" alt="Azure Virtual Desktop Specialty">
+                    <span>Azure Virtual Desktop Specialty</span>
+                </div>
+
+                <!-- Third row -->
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Teams Administrator Associate.png" alt="Teams Administrator Associate">
+                    <span>Teams Administrator Associate</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Azure Fundamentals.png" alt="Azure Fundamentals">
+                    <span>Azure Fundamentals</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Security, Compliance, and Identity Fundamentals.png" alt="Security, Compliance, and Identity Fundamentals">
+                    <span>Security, Compliance, and Identity Fundamentals</span>
+                </div>
+
+                <!-- Fourth row -->
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/Google IT Support Professional Certificate.png" alt="Google IT Support Professional Certificate">
+                    <span>Google IT Support Professional Certificate</span>
+                </div>
+                <div class="cert-card reflection-effect">
+                    <img class="cert-icon" src="cert-png/GitHub Foundations.png" alt="GitHub Foundations">
+                    <span>GitHub Foundations</span>
+                </div>
             </div>
         </section>
 
@@ -233,7 +275,7 @@
 
         <section id="projects" class="py-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12" data-en="Featured Projects" data-ko="주요 프로젝트">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <div class="project-card" data-index="0">
                     <div class="project-card-content">
                         <img src="project-01.jpg" alt="DevOps Automation Infrastructure" class="project-card-image">
@@ -330,7 +372,7 @@
         <section id="contact" class="py-20 text-center fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-4" data-en="Get In Touch" data-ko="연락하기">Get In Touch</h2>
             <p class="max-w-xl mx-auto text-gray-300 mb-8" data-en="My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!" data-ko="제 받은 편지함은 항상 열려 있습니다. 질문이 있거나 그냥 인사하고 싶으시면 최선을 다해 답변해 드리겠습니다!">My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!</p>
-            <a href="mailto:niwanthawick@outlook.com" class="inline-block bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Say Hello" data-ko="인사하기">Say Hello</a>
+            <a href="mailto:niwanthawick@outlook.com" class="gradient-cta inline-block bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Say Hello" data-ko="인사하기">Say Hello</a>
         </section>
     </main>
 
