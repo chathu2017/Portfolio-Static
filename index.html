@@ -43,8 +43,11 @@
 
     <main class="container mx-auto px-6">
         <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <div class="w-48 h-48 sm:w-56 sm:h-56 gemini-glow-circle mb-6">
-                 <img src="niwantha.png" alt="Niwantha Wickramasingha" class="profile-picture">
+            <div id="profile-card-3d" class="profile-3d-wrapper mb-8">
+                <div class="profile-3d-content">
+                    <div class="profile-glow-ring"></div>
+                    <img src="niwantha.png" alt="Niwantha" class="profile-img-3d">
+                </div>
             </div>
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-2" data-en="Hello, I'm" data-ko="안녕하세요, 저는">Hello, I'm</h1>
             <h2 class="text-3xl sm:text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] mb-4 break-words">NIWANTHA WICKRAMASINGHA</h2>
@@ -305,6 +308,68 @@
         <section id="projects" class="py-20 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-12" data-en="Featured Projects" data-ko="주요 프로젝트">Featured Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="project-card" data-index="0">
+                    <div class="project-card-content">
+                        <img src="project-06.png" alt="Azure Secure HA Architecture" class="project-card-image">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="project-card-title">☁️ Secure Azure Web Architecture & SQL HA Cluster</h3>
+                            <p class="project-card-desc">Designed a production-grade Azure infrastructure featuring Application Gateway, Python App Service, and SQL Always On Availability Groups for high availability...</p>
+                        </div>
+                    </div>
+                    <div class="project-full-content hidden">
+                        <p>Designed a production-grade Azure infrastructure featuring Application Gateway, Python App Service, and SQL Always On Availability Groups for high availability and security 🛡️.</p><br>
+                        
+                        <h4 class="font-bold text-white mb-2">🔧 Architecture Highlights:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>✅ Azure Application Gateway (WAF) with SSL Termination</li>
+                            <li>✅ Hybrid Compute: Nginx VM (Frontend) & Python App Service (Backend)</li>
+                            <li>✅ SQL Always On Availability Group (Primary & Secondary Nodes)</li>
+                            <li>✅ Internal Load Balancer (ILB) for Database High Availability</li>
+                            <li>✅ Active Directory (AD DC) Integration for Authentication</li>
+                            <li>✅ Secure Management via VPN Gateway (Site-to-Site Tunnel)</li>
+                        </ul><br>
+
+                        <h4 class="font-bold text-white mb-2">🌐 Live Demo & Access:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>🌍 Main Site: <a href="https://kloudschool.dev" target="_blank" class="text-[#00f2a1]">https://kloudschool.dev</a></li>
+                            <li>🐙 CI/CD: GitHub Actions Automated Deployment</li>
+                        </ul><br>
+
+                        <h4 class="font-bold text-white mb-2">📌 Use Cases:</h4>
+                        <p>Perfect for enterprise-grade applications requiring Zero Downtime (HA), strict network isolation (VNet), and secure VPN-based administration.</p><br>
+                    </div>a
+                </div>
+                <div class="project-card" data-index="1">
+                    <div class="project-card-content">
+                        <img src="project-05.jpg" alt="ConvertSoon Hybrid Cloud AI Architecture" class="project-card-image">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="project-card-title">🌐 ConvertSoon: Enterprise AI Hybrid Cloud Platform</h3>
+                            <p class="project-card-desc">A Python-based global SaaS solution built on the Microsoft Ecosystem, utilizing Azure Traffic Manager and Azure OpenAI for secure, high-fidelity document conversions...</p>
+                        </div>
+                    </div>
+                    <div class="project-full-content hidden">
+                        <p>A flagship enterprise-grade product built entirely on the Microsoft Emerging Tech Stack. This Python-based engine utilizes a Hybrid Cloud Architecture to deliver fast, secure, and complex document conversions (PDF to Word/Excel) without the security headaches 🛡️.</p><br>
+
+                        <h4 class="font-bold text-white mb-2">⚡ Architecture & Tech Stack:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>✅ <strong>Global Scale:</strong> Azure Traffic Manager for geo-routing & low latency</li>
+                            <li>✅ <strong>AI Core:</strong> Azure OpenAI Integration for 100% private, complex data extraction</li>
+                            <li>✅ <strong>Hybrid Management:</strong> Azure Arc & Update Manager for unified governance</li>
+                            <li>✅ <strong>Security First:</strong> Azure Defender for Servers (Threat Protection)</li>
+                            <li>✅ <strong>Codebase:</strong> Custom High-Performance Python Engine</li>
+                        </ul><br>
+
+                        <h4 class="font-bold text-white mb-2">🚀 Live Platform:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>🌍 Official Site: <a href="https://convertsoon.com" target="_blank" class="text-[#00f2a1]">https://convertsoon.com</a></li>
+                        </ul><br>
+
+                        <h4 class="font-bold text-white mb-2">📌 Key Capabilities:</h4>
+                        <p>Designed for enterprises requiring strict data privacy while converting complex documents. It leverages the full power of the Microsoft Ecosystem to ensure reliability across global regions.</p><br>
+                        
+                        <p>🔗 <strong>Status:</strong> Production Ready (Enterprise Grade)</p>
+                    </div>
+</div>
                 <div class="project-card" data-index="0">
                     <div class="project-card-content">
                         <img src="project-01.jpg" alt="DevOps Automation Infrastructure" class="project-card-image">

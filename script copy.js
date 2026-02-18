@@ -160,32 +160,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // --- 3D Profile Picture Logic ---
-const profileWrapper = document.getElementById('profile-card-3d');
-const profileContent = profileWrapper.querySelector('.profile-3d-content');
-
-if (profileWrapper && profileContent) {
-    profileWrapper.addEventListener('mousemove', (e) => {
-        const rect = profileWrapper.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        // Tilt එක ගණනය කිරීම (X සහ Y අක්ෂ වලට)
-        // අගය වැඩි කළොත් (30) ඇලවෙන ප්‍රමාණය වැඩියි
-        const rotateX = ((y - centerY) / centerY) * -30; 
-        const rotateY = ((x - centerX) / centerX) * 30;
-
-        // පින්තූරය කරකවන්න
-        profileContent.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    // මවුස් එක අයින් කළාම කෙලින් වෙන්න
-    profileWrapper.addEventListener('mouseleave', () => {
-        profileContent.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    });
-}
+    
 });
