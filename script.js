@@ -645,7 +645,7 @@ initCanvas(); drawParticles();
 window.addEventListener('resize', initCanvas);
 
 /* ==========================================================================
-   CUSTOM SMOOTH SCROLL & OBSERVER (Fixes Footer Bug)
+   CUSTOM SMOOTH SCROLL & OBSERVER (Lag Fix Added for Mobile)
    ========================================================================== */
 const body = document.body;
 const scrollWrap = document.getElementById('smooth-wrapper');
@@ -655,21 +655,17 @@ let currentY = scrollY;
 let ease = 0.06;
 
 function setBodyHeight() {
-    const scrollContent = document.getElementById('smooth-content');
-    if(scrollContent) {
-        // getBoundingClientRect වෙනුවට offsetHeight භාවිතය වඩාත් නිවැරදියි
-        document.body.style.height = `${scrollContent.offsetHeight}px`;
+    // Desktop වලදී පමණක් Custom Scroll Height එක ලබා දෙන්න
+    if (window.innerWidth > 768) {
+        if(scrollContent) document.body.style.height = `${scrollContent.offsetHeight}px`;
+    } else {
+        // Mobile වලදී Native Scroll සඳහා
+        document.body.style.height = 'auto'; 
     }
 }
 
-// පිටුව load වී animations අවසන් වූ පසු නැවතත් උස නිවැරදි කිරීම (Failsafe)
-window.addEventListener('load', () => {
-    setTimeout(setBodyHeight, 500);
-    setTimeout(setBodyHeight, 2000); // සියලුම පින්තූර හා ෆොන්ට්ස් load වූ පසු
-});
-
 const resizeObserver = new ResizeObserver(() => setBodyHeight());
-resizeObserver.observe(scrollContent);
+if (scrollContent) resizeObserver.observe(scrollContent);
 document.querySelectorAll('img').forEach(img => { img.addEventListener('load', setBodyHeight); });
 window.addEventListener('resize', setBodyHeight);
 
@@ -678,19 +674,29 @@ function smoothScroll() {
     currentY += (scrollY - currentY) * ease;
     currentY = Math.round(currentY * 100) / 100;
     
-    scrollContent.style.transform = `translateY(-${currentY}px)`;
+    // Desktop වලදී පමණක් Transform එක ක්‍රියාත්මක කරන්න (Mobile Lag එක නැති කිරීමට)
+    if (window.innerWidth > 768) {
+        if (scrollContent) scrollContent.style.transform = `translateY(-${currentY}px)`;
+    }
     
-    const maxScroll = body.scrollHeight - window.innerHeight;
+    // Top Progress Bar Sync (Mobile සහ Desktop දෙකටම වැඩ කරයි)
+    const maxScroll = (window.innerWidth > 768 ? document.body.scrollHeight : document.documentElement.scrollHeight) - window.innerHeight;
     const scrollPercent = maxScroll > 0 ? (scrollY / maxScroll) * 100 : 0;
-    document.getElementById('top-scroll-progress').style.width = `${scrollPercent}%`;
+    const topProgress = document.getElementById('top-scroll-progress');
+    if (topProgress) topProgress.style.width = `${scrollPercent}%`;
     
+    // Timeline glow progress sync
     const timeline = document.getElementById('timeline-progress');
     if(timeline) {
-        const timelineRect = document.getElementById('timeline-container').getBoundingClientRect();
-        const tlPercent = Math.max(0, Math.min(100, (window.innerHeight/1.5 - timelineRect.top) / timelineRect.height * 100));
-        timeline.style.height = `${tlPercent}%`;
+        const timelineContainer = document.getElementById('timeline-container');
+        if(timelineContainer) {
+            const timelineRect = timelineContainer.getBoundingClientRect();
+            const tlPercent = Math.max(0, Math.min(100, (window.innerHeight/1.5 - timelineRect.top) / timelineRect.height * 100));
+            timeline.style.height = `${tlPercent}%`;
+        }
     }
 
+    // Parallax for Background Texts
     document.querySelectorAll('.sec-bg-text').forEach(text => {
         const rect = text.getBoundingClientRect();
         if(rect.top < window.innerHeight && rect.bottom > 0) {

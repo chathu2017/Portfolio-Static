@@ -905,8 +905,20 @@ footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 0; text-ali
     /* Cursor & Nav Fixes */
     .cursor-dot, .cursor-ring { display: none; } 
     * { cursor: auto !important; }
-    .nav-links, .nav-actions { display: none; }
-    .menu-toggle { display: block; }
+    
+    /* --- Navigation & Menu Fixes --- */
+    .nav-links { display: none; }
+    .nav-actions { display: flex; margin-right: 15px; }
+    .brand { font-size: 1.8rem; margin-right: auto; }
+    .lang-btn { padding: 6px 10px; font-size: 0.75rem; gap: 5px; }
+    
+    /* මෙන්න මේ පේළිය තමයි මඟහැරිලා තිබුණේ */
+    .menu-toggle { display: block; } 
+
+    /* --- Mobile Scrolling Lag Fix (Native Scroll) --- */
+    #smooth-wrapper { position: relative; height: auto; overflow: visible; }
+    #smooth-content { transform: none !important; }
+    body { height: auto !important; }
     
     /* General Spacing */
     .section-pad { padding: 100px 0; }
