@@ -1,500 +1,269 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niwantha Wickramasingha | Cloud Engineer</title>
+    <title>Niwantha Wickramasingha | Elite Cloud Engineer</title>
     <link rel="icon" href="niwantha-fav.png" type="image/png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700;800&family=Outfit:wght@300;400;600;800;900&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="theme-dark developer-surface">
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3">
-        <nav class="mx-auto w-11/12 max-w-6xl px-6 py-5 flex justify-between items-center rounded-xl glass-header">
-            <a href="#home" class="text-xl font-bold text-white brand-mark">NW<span class="text-[#00f2a1] brand-dot">.</span></a>
+    <div id="glitch-overlay">
+        <div class="glitch-text-overlay">SYSTEM.TRANSLATE()</div>
+    </div>
+
+    <div id="top-scroll-progress"></div>
+
+    <canvas id="canvas-network"></canvas>
+    <div class="cyber-grid-floor"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div id="preloader">
+        <div class="cyber-loader"></div>
+        <div class="loader-text">INITIALIZING SYSTEM</div>
+        <div class="progress-bar-container"><div class="progress-bar" id="load-bar"></div></div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <header id="header">
+        <div class="container nav-inner">
+            <a href="#home" class="brand magnetic-target">NW<span class="brand-dot">_</span></a>
             
-            <div class="flex items-center">
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="About" data-ko="소개">About</a>
-                    <a href="#skills" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="Skills" data-ko="기술">Skills</a>
-                    <a href="#experience" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="Experience" data-ko="경력">Experience</a>
-                    <a href="#projects" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="Projects" data-ko="프로젝트">Projects</a>
-                    <a href="https://kloudschool.com" target="_blank" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="Blog" data-ko="블로그">Blog</a>
-                    <a href="#contact" class="nav-link hover:text-[#00f2a1] transition-colors" data-en="Contact" data-ko="연락처">Contact</a>
-                </div>
-    
-                <div class="flex items-center space-x-4 ml-4 md:ml-8">
-                    <a href="https://kloudschool.com" target="_blank" class="mobile-blog-icon md:hidden">
-                        <i class="fas fa-globe"></i>
-                    </a>
-                    <button id="lang-toggle" class="bg-[#00f2a1] text-[#0a192f] font-bold py-1 px-3 rounded-md text-sm">한국어</button>
-                </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_about">About</span><span class="link-ko" data-i18n-ko="nav_about_ko">소개</span></a></li>
+                <li><a href="#skills" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_skills">Skills</span><span class="link-ko" data-i18n-ko="nav_skills_ko">기술</span></a></li>
+                <li><a href="#education" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_edu">Education</span><span class="link-ko" data-i18n-ko="nav_edu_ko">교육</span></a></li>
+                <li><a href="#experience" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_exp">Experience</span><span class="link-ko" data-i18n-ko="nav_exp_ko">경력</span></a></li>
+                <li><a href="#projects" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_proj">Projects</span><span class="link-ko" data-i18n-ko="nav_proj_ko">프로젝트</span></a></li>
+                <li><a href="https://kloudschool.com" target="_blank" class="nav-link magnetic-target"><span class="link-en" data-i18n="nav_blog">Blog</span><span class="link-ko" data-i18n-ko="nav_blog_ko">블로그</span></a></li>
+            </ul>
+            
+            <div class="nav-actions" id="nav-actions">
+                <button id="lang-toggle" class="lang-btn magnetic-target"><i class="fas fa-language"></i> <span id="lang-text">한국어</span></button>
             </div>
-        </nav>
+            
+            <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
     </header>
 
-    <main class="container mx-auto px-6">
-        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <div id="profile-card-3d" class="profile-3d-wrapper mb-8">
-                <div class="profile-3d-content">
-                    <div class="profile-glow-ring"></div>
-                    <img src="niwantha.png" alt="Niwantha" class="profile-img-3d">
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <section id="home" class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-text-box">
+                        <div class="terminal-box">
+                            <span class="user">user@nw-cloud</span>:<span class="path">~</span># <span style="color:var(--neon-cyan)">whoami</span>
+                        </div>
+                        <h1 class="hero-title font-display">
+                            <span class="glitch-layer" data-text="NIWANTHA" data-i18n="hero_name_1">NIWANTHA</span><br>
+                            <span data-text="WICKRAMASINGHA" class="glitch-layer" data-i18n="hero_name_2">WICKRAMASINGHA</span>
+                        </h1>
+                        <div class="typewriter-wrap">
+                            <span id="typewriter"></span><span class="cursor-blink" style="animation: blink 1s infinite;">_</span>
+                        </div>
+                        <p class="hero-desc reveal font-display" data-i18n="hero_desc">
+                            Architecting secure, scalable, and automated cloud infrastructures. Empowering organizations through Microsoft Azure, Kubernetes, and advanced CI/CD pipelines.
+                        </p>
+                        
+                        <div class="hero-actions reveal">
+                            <a href="mailto:niwanthawick@outlook.com" class="btn-cyber magnetic-target font-code" data-i18n="hero_btn">INITIATE CONTACT</a>
+                            <div class="social-hero">
+                                <a href="https://linkedin.com/in/niwantha-wickramasingha" target="_blank" class="magnetic-target"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://kloudschool.com" target="_blank" class="magnetic-target"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual reveal">
+                        <div class="profile-container">
+                            <div class="profile-frame"></div>
+                            <div class="profile-frame-2"></div>
+                            <div class="profile-frame-3"></div>
+                            <img src="niwantha.png" alt="Niwantha Wickramasingha" class="profile-img">
+                            
+                            <div class="tech-badge badge-1"><i class="devicon-azure-plain"></i> <span data-i18n="badge_1">AZURE EXPERT</span></div>
+                            <div class="tech-badge badge-2"><i class="devicon-kubernetes-plain"></i> <span data-i18n="badge_2">CLOUD NATIVE</span></div>
+                            <div class="tech-badge badge-3"><i class="devicon-terraform-plain"></i> <span data-i18n="badge_3">INFRA AS CODE</span></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-2" data-en="Hello, I'm" data-ko="안녕하세요, 저는">Hello, I'm</h1>
-            <h2 class="text-3xl sm:text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] mb-4 break-words">NIWANTHA WICKRAMASINGHA</h2>
-            <h3 id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8" data-en="Cloud Engineer & Microsoft Certified Trainer" data-ko="클라우드 엔지니어 & Microsoft 공인 트레이너">Cloud Engineer & Microsoft Certified Trainer</h3>
-            <div class="flex items-center space-x-6">
-                <a href="mailto:niwanthawick@outlook.com" class="gradient-cta bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Let's Talk" data-ko="이야기하기">Let's Talk</a>
-                <a href="https://linkedin.com/in/niwantha-wickramasingha" target="_blank" class="text-2xl hover:text-[#00f2a1] transition-colors"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </section>
-
-        <section id="about" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="About Me" data-ko="소개">About Me</h2>
-            <div class="max-w-4xl mx-auto text-center text-lg text-gray-300 leading-relaxed">
-                <p data-en="Experienced Cloud Engineer with a strong focus on cloud infrastructure and automation, specializing in the Microsoft Azure ecosystem. As a Microsoft Certified Trainer (MCT), I hold multiple Azure certifications in Solutions Architecture, DevOps, Security, and Administration. I have proven expertise in deploying cloud-native services using Infrastructure as Code (Terraform), building CI/CD pipelines, and working with Docker and Kubernetes. Skilled in implementing robust monitoring solutions using Grafana, Prometheus, and Azure Monitor in production-grade environments." data-ko="클라우드 인프라 및 자동화에 중점을 둔 숙련된 클라우드 엔지니어로, Microsoft Azure 생태계를 전문으로 합니다. Microsoft 공인 트레이너(MCT)로서 솔루션 아키텍처, DevOps, 보안 및 관리 분야에서 다수의 Azure 자격증을 보유하고 있습니다. 코드형 인프라(Terraform)를 사용하여 클라우드 네이티브 서비스를 배포하고, CI/CD 파이프라인을 구축하며, Docker 및 Kubernetes와 작업한 경험이 입증되었습니다. Grafana, Prometheus 및 Azure Monitor를 사용하여 프로덕션 등급 환경에서 강력한 모니터링 솔루션을 구현하는 데 능숙합니다.">
-                    Experienced Cloud Engineer with a strong focus on cloud infrastructure and automation, specializing in the Microsoft Azure ecosystem. As a Microsoft Certified Trainer (MCT), I hold multiple Azure certifications in Solutions Architecture, DevOps, Security, and Administration. I have proven expertise in deploying cloud-native services using Infrastructure as Code (Terraform), building CI/CD pipelines, and working with Docker and Kubernetes. Skilled in implementing robust monitoring solutions using Grafana, Prometheus, and Azure Monitor in production-grade environments.
-                </p>
-            </div>
-        </section>
-
-        <section id="skills" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="Technical Skills" data-ko="기술 능력">Technical Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-                <div class="skill-card reflection-effect"><i class="devicon-azure-plain"></i><span>Azure</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-amazonwebservices-original"></i><span>AWS</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-googlecloud-plain"></i><span>GCP</span></div>
-                <div class="skill-card reflection-effect"><i class="fas fa-desktop"></i><span>Azure Virtual Desktop</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-docker-plain"></i><span>Docker</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-kubernetes-plain"></i><span>Kubernetes</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-terraform-plain"></i><span>Terraform</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-ansible-plain"></i><span>Ansible</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-python-plain"></i><span>Python</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-linux-plain"></i><span>Linux</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-windows8-original"></i><span>Windows Server</span></div>
-                <div class="skill-card reflection-effect"><i class="devicon-grafana-original"></i><span>Grafana</span></div>
-            </div>
-        </section>
-
-        <section id="education" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="Education" data-ko="교육">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 
-                <div class="cert-card reflection-effect">
-                    <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-4xl text-[#00f2a1]"></i>
-                    </div>
-                    <div>
-                        <span class="block font-semibold">B.Eng (Hons) Computer Network (2nd Upper)</span>
-                        <span class="block text-sm text-gray-400">Metropoliton University, London</span>
-                    </div>
+                <div class="scroll-indicator">
+                    <div class="mouse"><div class="wheel"></div></div>
+                    <div class="scroll-text" data-i18n="scroll_down">SCROLL</div>
                 </div>
+            </section>
 
-                <div class="cert-card reflection-effect">
-                    <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-4xl text-[#00f2a1]"></i>
+            <section id="about" class="section-pad about-section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <div class="sec-bg-text" data-i18n="bg_about">SYS.INFO</div>
+                        <div class="sec-subtitle" data-i18n="sub_about">/01 PROFILE</div>
+                        <h2 class="sec-title font-display"><span data-i18n="title_about_1">System</span> <span style="color:var(--text-main)" data-i18n="title_about_2">Architecture</span></h2>
                     </div>
-                    <div>
-                        <span class="block font-semibold">HND In Network Engineering</span>
-                        <span class="block text-sm text-gray-400">Pearson, United Kingdom</span>
-                    </div>
-                </div>
-
-                <div class="cert-card reflection-effect">
-                    <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-4xl text-[#00f2a1]"></i>
-                    </div>
-                    <div>
-                        <span class="block font-semibold">Diploma In Information Technology</span>
-                        <span class="block text-sm text-gray-400">Pearson, United Kingdom</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <section id="certifications" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="Certifications" data-ko="자격증">Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Azure Solutions Architect Expert.png" alt="Azure Solutions Architect Expert">
-                    <span>Azure Solutions Architect Expert</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/DevOps Engineer Expert.png" alt="DevOps Engineer Expert">
-                    <span>DevOps Engineer Expert</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Github action.png" alt="Github action">
-                    <span>Github action</span>
-                </div>
-
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Azure Administrator.png" alt="Azure Administrator Associate">
-                    <span>Azure Administrator Associate</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Azure Security Engineer Associate.png" alt="Azure Security Engineer Associate">
-                    <span>Azure Security Engineer Associate</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Azure Virtual Desktop Specialty.png" alt="Azure Virtual Desktop Specialty">
-                    <span>Azure Virtual Desktop Specialty</span>
-                </div>
-
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Teams Administrator Associate.png" alt="Teams Administrator Associate">
-                    <span>Teams Administrator Associate</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Azure Fundamentals.png" alt="Azure Fundamentals">
-                    <span>Azure Fundamentals</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Security, Compliance, and Identity Fundamentals.png" alt="Security, Compliance, and Identity Fundamentals">
-                    <span>Security, Compliance, and Identity Fundamentals</span>
-                </div>
-
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/Google IT Support Professional Certificate.png" alt="Google IT Support Professional Certificate">
-                    <span>Google IT Support Professional Certificate</span>
-                </div>
-                <div class="cert-card reflection-effect">
-                    <img class="cert-icon" src="cert-png/GitHub Foundations.png" alt="GitHub Foundations">
-                    <span>GitHub Foundations</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="Career Journey" data-ko="경력">Career Journey</h2>
-            <div class="max-w-4xl mx-auto relative border-l-2 border-[#00f2a1]/30 pl-8 md:pl-10">
-                <div class="timeline-item mb-8 relative">
-                    <div class="absolute -left-[38px] md:-left-[46px] top-1 w-4 h-4 rounded-full bg-[#00f2a1] border-4 border-[#0a192f]"></div>
-                    <div class="timeline-trigger cursor-pointer flex justify-between items-center">
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1" data-en="Nov 2024 - Present" data-ko="2024년 11월 - 현재">Nov 2024 - Present</p>
-                            <h3 class="text-xl font-bold text-white">Cloud Engineer</h3>
-                            <h4 class="text-md text-gray-300">TechOne Global Pvt Ltd</h4>
+                    
+                    <div class="about-grid">
+                        <div class="glass-card reveal card-glow-track">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 25px; color: var(--neon-cyan); font-family: var(--font-code); font-weight: 800;">Identity.exe</h3>
+                            <div class="about-text font-display" id="about-text-container">
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <div class="stat-num">04+</div>
+                                    <div class="stat-label font-code" data-i18n="stat_exp">Years Exp.</div>
+                                </div>
+                                <div class="stat-box" style="border-left-color: var(--neon-blue);">
+                                    <div class="stat-num">10+</div>
+                                    <div class="stat-label font-code" data-i18n="stat_cert">Certifications</div>
+                                </div>
+                                <div class="stat-box" style="border-left-color: var(--neon-purple);">
+                                    <div class="stat-num">20+</div>
+                                    <div class="stat-label font-code" data-i18n="stat_proj">Projects</div>
+                                </div>
+                            </div>
                         </div>
-                        <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="glass-effect reflection-effect p-6 rounded-lg mt-4">
-                            <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <li> ✅ Lead presales activities and Azure Infra and Azure DevOps technical discussions with global customers. </li>
-                                <li> ✅ Collaborate with teams to coordinate complex RFP proposals and ensure alignment with business objectives. </li>
-                                <li> ✅ Work closely with Account Managers to qualify customer needs, develop proposals, and manage opportunities to closure. </li>
-                                <li> ✅ Define system requirements, specifications, architectures, and pricing to align with customer needs, industry standards, and regulatory compliance. </li>
-                                <li> ✅ Research and evaluate emerging cloud technologies and Azure service innovations. </li>
-                                <li> ✅ Leverage technical expertise and customer insights to develop modernization roadmaps. </li>
-                                <li> ✅ Design solutions adhering to Microsoft’s "Well-Architected" framework. </li>
-                                <li> ✅ Draft technical proposals, Statements of Work (SOWs), and present them to customers. </li>
-                                <li> ✅ Estimate project delivery efforts in collaboration with the engineering team. </li>
-                                <li> ✅ Lead a team of cloud engineers to ensure successful project execution through effective management and coordination. </li>
-                                <li> ✅ Architect cloud solutions tailored to customer requirements. </li>
-                                <li> ✅ Delivering Technical Trainings. </li>
-                                <li> ✅ Deploy Azure projects for SMBs, the public sector, and enterprise customers. </li>
-                                <li> ✅ Troubleshoot technical issues related to Microsoft Azure services. </li>
-                                <li> ✅ Maintain and manage customer Azure subscriptions while ensuring SLAs are met. </li>
-                                <li> ✅ Design and implement CI/CD pipelines using Azure DevOps, GitLab, and GitHub. </li>
-                                <li> ✅ Architect and deploy Azure Kubernetes Service (AKS) and Azure Container Registry. </li> 
-                                <li> ✅ Maintain broad technical expertise in Azure IaaS, PaaS, and SaaS to design and integrate comprehensive cloud solutions. </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item mb-8 relative">
-                    <div class="absolute -left-[38px] md:-left-[46px] top-1 w-4 h-4 rounded-full bg-[#00f2a1] border-4 border-[#0a192f]"></div>
-                    <div class="timeline-trigger cursor-pointer flex justify-between items-center">
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1" data-en="Sep 2023 - Aug 2024" data-ko="2023년 9월 - 2024년 8월">Sep 2023 - Aug 2024</p>
-                            <h3 class="text-xl font-bold text-white">Systems Engineer</h3>
-                            <h4 class="text-md text-gray-300">DirectFN</h4>
-                        </div>
-                        <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="glass-effect reflection-effect p-6 rounded-lg mt-4">
-                            <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <p>DirectFN™, also known as Mubasher Development Centre, is a pioneer in providing world-class software solutions to the Financial Service Industry. Serving from five (05) corporate offices in UAE, Saudi Arabia, Kuwait, Sri Lanka, and Pakistan; expanding to Emerging & Frontier Markets.</p>
-                                    <p>Allocated projects: Colombo (John Keels Stock Brokerage, ASHA Securities, Nestor Stock Brokers, Somerville Stock Brokers), Bangladesh (Shanta Securities, City Brokerage, BRAC Bangladesh).</p>
-                                    <ul>
-                                    <li>✅ Overseeing the implementation of DirectFN Brokerage Solutions.</li>
-                                    <li>✅ Demonstrated expertise in trading solutions, contributing to seamless operations.</li>
-                                    <li>✅ Applied comprehensive knowledge to configure and deploy Java-based applications effectively.</li>
-                                    <li>✅ Effectively managed the deployment of updates and releases in both Production and UAT environments.</li>
-                                    <li>✅ Handling RHEL Systems, ensuring optimal performance and reliability.</li>
-                                    <li>✅ Mastered Linux OS management, including LVM and NFS, while excelling in Bash scripting, Cron job configuration, server hardening, and time synchronization.</li>
-                                    <li>✅ Applied expertise in HAProxy/NGINX, proficiently managing web hosting, reverse proxying, SSL configuration, load balancing, and troubleshooting.</li>
-                                    <li>✅ Efficiently administered the JBOSS application server, contributing to a robust application infrastructure.</li>
-                                    <li>✅ Provided exceptional production support during critical trading hours, ensuring uninterrupted services.</li>
-                                    <li>✅ Established FIX sessions between stock brokers and stock exchanges, facilitating seamless communication.</li>
-                                    <li>✅ Collaborated seamlessly with international IT professionals, delivering deployment and production support on a global scale.</li>
-                                    <li>✅ Proficiently oversaw Kubernetes and Docker administration, enhancing system efficiency.</li>
-                                    <li>✅ Delivering technical trainings with clear guidance and hands-on support.</li>
-                                    </ul>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item mb-8 relative">
-                    <div class="absolute -left-[38px] md:-left-[46px] top-1 w-4 h-4 rounded-full bg-[#00f2a1] border-4 border-[#0a192f]"></div>
-                    <div class="timeline-trigger cursor-pointer flex justify-between items-center">
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1" data-en="Nov 2022 - Apr 2023" data-ko="2022년 11월 - 2023년 4월">Nov 2022 - Apr 2023</p>
-                            <h3 class="text-xl font-bold text-white">IT Support Specialist (NOC)</h3>
-                            <h4 class="text-md text-gray-300">Eureka Technology Partners</h4>
-                        </div>
-                        <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="glass-effect reflection-effect p-6 rounded-lg mt-4">
-                            <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <li>✅ Initiated and oversaw customer support functions, maintaining local applications, servers, firewalls, databases, and hardware components.</li>
-                                <li>✅ Managed new user creations, mailbox usage, access, and policy configurations in Microsoft 365 and 365 Admin portals.</li>
-                                <li>✅ Administered ongoing projects involving user onboarding and device standardization in Entra ID.</li>
-                                <li>✅ Troubleshot technical issues and resolved them with optimal solutions.</li>
-                                <li>✅ Tested user cases, firewall and AP configurations, and managed Active Directory for clients.</li>
-                                <li>✅ Handled internal databases (SQL), device formatting, OS installations, backups and restores, patching, and Windows Server 2016 management.</li>
-                                <li>✅ Managed Remote Desktop (RDP) sessions and file servers, providing appropriate file access permissions for users.</li>
-                                <li>✅ Configured and managed client VPNs and credentials.</li>
-                                <li>✅ Built and maintained virtual machines in VMware 2016.</li>
-                                <li>✅ Created essential reports and documentation.</li>
-                                <li>✅ Installed and configured Zimbra Email Servers.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item relative">
-                    <div class="absolute -left-[38px] md:-left-[46px] top-1 w-4 h-4 rounded-full bg-[#00f2a1] border-4 border-[#0a192f]"></div>
-                    <div class="timeline-trigger cursor-pointer flex justify-between items-center">
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1" data-en="Aug 2021 - Oct 2022" data-ko="2021년 8월 - 2022년 10월">Aug 2021 - Oct 2022</p>
-                            <h3 class="text-xl font-bold text-white">IT Assistant Admin</h3>
-                            <h4 class="text-md text-gray-300">ZAG Officials Pvt Ltd</h4>
-                        </div>
-                        <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="glass-effect reflection-effect p-6 rounded-lg mt-4">
-                            <ul class="list-disc list-inside text-gray-400 space-y-2">
-                                <li>✅ Ensured the optimal functionality of all networking devices, including FortiGate Firewall.</li>
-                                <li>✅ Monitored and maintained the local area network (LAN) for seamless connectivity.</li>
-                                <li>✅ Performed routine maintenance and management of server infrastructure.</li>
-                                <li>✅ Provided end-user support to resolve technical issues promptly.</li>
-                                <li>✅ Managed and updated the IT asset inventory.</li>
-                                <li>✅ Delivered hardware support and troubleshooting for equipment-related problems.</li>
-                                <li>✅ Performed software updates and ensured software licensing compliance.</li>
-                                <li>✅ Administered and maintained compliance with Microsoft 365 services.</li>
-                                <li>✅ Monitored and configured the firewall to strengthen network security.</li>
-                                <li>✅ Maintained and managed Network Attached Storage (NAS) systems.</li>
-                                <li>✅ Created and managed virtual machines (droplets) on DigitalOcean for development and testing (Debian-based environments).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="py-20 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-12" data-en="Featured Projects" data-ko="주요 프로젝트">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div class="project-card" data-index="0">
-                    <div class="project-card-content">
-                        <img src="project-06.png" alt="Azure Secure HA Architecture" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">☁️ Secure Azure Web Architecture & SQL HA Cluster</h3>
-                            <p class="project-card-desc">Designed a production-grade Azure infrastructure featuring Application Gateway, Python App Service, and SQL Always On Availability Groups for high availability...</p>
-                        </div>
-                    </div>
-                    <div class="project-full-content hidden">
-                        <p>Designed a production-grade Azure infrastructure featuring Application Gateway, Python App Service, and SQL Always On Availability Groups for high availability and security 🛡️.</p><br>
                         
-                        <h4 class="font-bold text-white mb-2">🔧 Architecture Highlights:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>✅ Azure Application Gateway (WAF) with SSL Termination</li>
-                            <li>✅ Hybrid Compute: Nginx VM (Frontend) & Python App Service (Backend)</li>
-                            <li>✅ SQL Always On Availability Group (Primary & Secondary Nodes)</li>
-                            <li>✅ Internal Load Balancer (ILB) for Database High Availability</li>
-                            <li>✅ Active Directory (AD DC) Integration for Authentication</li>
-                            <li>✅ Secure Management via VPN Gateway (Site-to-Site Tunnel)</li>
-                        </ul><br>
-
-                        <h4 class="font-bold text-white mb-2">🌐 Live Demo & Access:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>🌍 Main Site: <a href="https://kloudschool.dev" target="_blank" class="text-[#00f2a1]">https://kloudschool.dev</a></li>
-                            <li>🐙 CI/CD: GitHub Actions Automated Deployment</li>
-                        </ul><br>
-
-                        <h4 class="font-bold text-white mb-2">📌 Use Cases:</h4>
-                        <p>Perfect for enterprise-grade applications requiring Zero Downtime (HA), strict network isolation (VNet), and secure VPN-based administration.</p><br>
-                    </div>a
-                </div>
-                <div class="project-card" data-index="1">
-                    <div class="project-card-content">
-                        <img src="project-05.jpg" alt="ConvertSoon Hybrid Cloud AI Architecture" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">🌐 ConvertSoon: Enterprise AI Hybrid Cloud Platform</h3>
-                            <p class="project-card-desc">A Python-based global SaaS solution built on the Microsoft Ecosystem, utilizing Azure Traffic Manager and Azure OpenAI for secure, high-fidelity document conversions...</p>
+                        <div class="skills-container reveal" id="skills">
+                            <h3 class="skills-header">> LOAD_MODULES(Skills)</h3>
+                            <div class="skill-grid">
+                                <div class="skill-node magnetic-target"><i class="devicon-azure-plain"></i> Azure</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-amazonwebservices-original"></i> AWS</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-googlecloud-plain"></i> GCP</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-kubernetes-plain"></i> Kubernetes</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-docker-plain"></i> Docker</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-terraform-plain"></i> Terraform</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-ansible-plain"></i> Ansible</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-python-plain"></i> Python</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-linux-plain"></i> Linux</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-windows8-original"></i> Win Server</div>
+                                <div class="skill-node magnetic-target"><i class="devicon-grafana-original"></i> Grafana</div>
+                                <div class="skill-node magnetic-target"><i class="fas fa-desktop"></i> Azure AVD</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-full-content hidden">
-                        <p>A flagship enterprise-grade product built entirely on the Microsoft Emerging Tech Stack. This Python-based engine utilizes a Hybrid Cloud Architecture to deliver fast, secure, and complex document conversions (PDF to Word/Excel) without the security headaches 🛡️.</p><br>
+                </div>
+            </section>
 
-                        <h4 class="font-bold text-white mb-2">⚡ Architecture & Tech Stack:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>✅ <strong>Global Scale:</strong> Azure Traffic Manager for geo-routing & low latency</li>
-                            <li>✅ <strong>AI Core:</strong> Azure OpenAI Integration for 100% private, complex data extraction</li>
-                            <li>✅ <strong>Hybrid Management:</strong> Azure Arc & Update Manager for unified governance</li>
-                            <li>✅ <strong>Security First:</strong> Azure Defender for Servers (Threat Protection)</li>
-                            <li>✅ <strong>Codebase:</strong> Custom High-Performance Python Engine</li>
-                        </ul><br>
-
-                        <h4 class="font-bold text-white mb-2">🚀 Live Platform:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>🌍 Official Site: <a href="https://convertsoon.com" target="_blank" class="text-[#00f2a1]">https://convertsoon.com</a></li>
-                        </ul><br>
-
-                        <h4 class="font-bold text-white mb-2">📌 Key Capabilities:</h4>
-                        <p>Designed for enterprises requiring strict data privacy while converting complex documents. It leverages the full power of the Microsoft Ecosystem to ensure reliability across global regions.</p><br>
-                        
-                        <p>🔗 <strong>Status:</strong> Production Ready (Enterprise Grade)</p>
+            <section id="education" class="section-pad edu-section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <div class="sec-bg-text" data-i18n="bg_edu">ACADEMY</div>
+                        <div class="sec-subtitle" data-i18n="sub_edu">/01.2 FOUNDATION</div>
+                        <h2 class="sec-title font-display"><span data-i18n="title_edu_1">Academic</span> <span style="color:var(--text-main)" data-i18n="title_edu_2">Background</span></h2>
                     </div>
-</div>
-                <div class="project-card" data-index="0">
-                    <div class="project-card-content">
-                        <img src="project-01.jpg" alt="DevOps Automation Infrastructure" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">🚀 Secure & Scalable DevOps Automation Infrastructure</h3>
-                            <p class="project-card-desc">I’ve implemented a cost-effective and highly secure DevOps automation environment suitable for startups, entry-level teams, or even high-capacity enterprises...</p>
+                    
+                    <div class="edu-featured-card reveal card-glow-track">
+                        <div class="edu-featured-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="edu-featured-content">
+                            <div class="edu-badge font-code"><span class="blink-dot"></span> <span data-i18n="msc_badge">CURRENTLY READING</span></div>
+                            <h3 class="font-display" data-i18n="msc_title">MSc in Software and AI</h3>
+                            <p class="font-code"><span data-i18n="msc_uni">Dong-Eui University</span> <span class="divider">|</span> <span data-i18n="msc_loc">Busan, South Korea</span></p>
                         </div>
                     </div>
-                    <div class="project-full-content hidden">
-                        <p>I’ve implemented a cost-effective and highly secure DevOps automation environment suitable for startups, entry-level teams, or even high-capacity enterprises 💼.</p><br>
-                        <h4 class="font-bold text-white mb-2">🔧 Setup Highlights:</h4>
-                        <ul class="list-disc list-inside space-y-1"><li>✅ Azure Linux VM with Dockerized Jenkins and SonarQube</li><li>✅ All local inbound access is blocked (Server & NSG level)</li><li>✅ SSL enabled with domain mapping</li><li>✅ Public IP whitelisting for secure access</li><li>✅ Health-check cronjob every minute – auto restarts containers if stopped</li><li>✅ Future-ready with options to add Load Balancer & VM Scale Set for High Availability (HA)</li></ul><br>
-                        <h4 class="font-bold text-white mb-2">🌐 Live Demo URLs:</h4>
-                        <ul class="list-disc list-inside space-y-1"><li>🌍 Main site: <a href="https://kloudkafe.org" target="_blank" class="text-[#00f2a1]">https://kloudkafe.org</a></li><li>🛠️ Jenkins: <a href="https://lnkd.in/g3eWA7yJ" target="_blank" class="text-[#00f2a1]">https://lnkd.in/g3eWA7yJ</a></li><li>📊 SonarQube: <a href="https://lnkd.in/gyV-P3MG" target="_blank" class="text-[#00f2a1]">https://lnkd.in/gyV-P3MG</a></li></ul><br>
-                        <h4 class="font-bold text-white mb-2">📌 Use Cases:</h4>
-                        <p>Perfect for teams aiming to kickstart CI/CD with centralized security and flexibility.</p><br>
-                        <p>🔗 GitHub repo with full code & infra: <a href="https://lnkd.in/g-Hdp_Bs" target="_blank" class="text-[#00f2a1]">https://lnkd.in/g-Hdp_Bs</a></p>
+                    <div class="edu-grid" id="edu-grid-container">
                     </div>
                 </div>
-                <div class="project-card" data-index="1">
-                    <div class="project-card-content">
-                        <img src="project-02.jpg" alt="Secure Hybrid Networking with IPSec VPN" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">🚀 Secure Access from On-Premises to Azure</h3>
-                            <p class="project-card-desc">I implemented a hybrid networking project in Azure, enabling secure communication from an on-premises environment to Azure-hosted resources using IPSec (IKEv2) VPN tunneling...</p>
-                        </div>
-                    </div>
-                    <div class="project-full-content hidden">
-                        <p>I implemented a hybrid networking project in Azure, enabling secure communication from an on-premises environment to Azure-hosted resources using IPSec (IKEv2) VPN tunneling.</p><br>
-                        <h4 class="font-bold text-white mb-2">Architecture Overview:</h4>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong>3 Azure VNets:</strong>
-                                <ul class="list-disc list-inside ml-6 mt-1">
-                                    <li>Hub VNet (192.168.0.0/24) – Hosted the Azure VPN Gateway</li>
-                                    <li>Spoke 1 VNet (192.168.1.0/24) – Deployed Nginx Web Server on a VM</li>
-                                    <li>Spoke 2 VNet (192.168.3.0/24) – Hosted Azure MySQL Flexible Server (Private Access only)</li>
-                                </ul>
-                            </li>
-                            <li>All VNets are peered, allowing seamless communication.</li>
-                            <li>On-premises environment simulated using another Azure tenant + VNet with Windows Server 2022 configured as a router via RRAS.</li>
-                        </ul><br>
-                        <h4 class="font-bold text-white mb-2">🔐 The Result:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>✅ Successfully accessed Azure-hosted MySQL Flexible Server and Web App over private IP via a secure IPSec VPN tunnel.</li>
-                            <li>✅ MySQL connection is encrypted with SSL using Azure’s public CA certificate.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="project-card" data-index="2">
-                    <div class="project-card-content">
-                        <img src="project-03.jpg" alt="Azure VNet Peering Across Tenants" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">🌐 Azure VNet Peering Across Tenants</h3>
-                            <p class="project-card-desc">Are you managing multiple Azure tenants and need secure, low-latency connectivity between virtual networks? This project explains how...</p>
-                        </div>
-                    </div>
-                    <div class="project-full-content hidden">
-                        <p>Are you managing multiple Azure tenants and need secure, low-latency connectivity between virtual networks? 🤔</p><br>
-                        <p>In this project, I explain how to implement VNet peering across different Azure tenants with best practices, key considerations, and real-world architecture.</p><br>
-                        <h4 class="font-bold text-white mb-2">✅ What you’ll learn:</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>➡️What is Azure VNet Peering across tenants</li>
-                            <li>➡️Role requirements and access controls</li>
-                            <li>➡️Step-by-step configuration with portal</li>
-                        </ul><br>
-                        <p>🔗 Read the full article here 👉 <a href="https://lnkd.in/gau2vdaS" target="_blank" class="text-[#00f2a1]">https://lnkd.in/gau2vdaS</a></p>
-                    </div>
-                </div>
-                <div class="project-card" data-index="3">
-                    <div class="project-card-content">
-                        <img src="project-04.jpg" alt="Jenkins with CICD Pipeline implementation (AKS)" class="project-card-image">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="project-card-title">🚀 Jenkins with CICD Pipeline implementation (AKS)</h3>
-                            <p class="project-card-desc">An End-to-End DevOps Project for Kubernetes using Azure, Jenkins, & GitLab. This setup reflects real-world DevOps practices—automated, secure, and scalable...</p>
-                        </div>
-                    </div>
-                    <div class="project-full-content hidden">
-                        <p>Proud to share a complete DevOps pipeline I recently implemented! 🔧🌐</p><br>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>🔹 CI/CD Pipeline powered by Jenkins (Groovy scripted)</li>
-                            <li>🔹 Code Quality Checks with SonarQube</li>
-                            <li>🔹 Container Image Management via Azure Container Registry (ACR)</li>
-                            <li>🔹 UAT Environment deployed to DigitalOcean Kubernetes Cluster</li>
-                            <li>🔹 Production Deployment on Azure Kubernetes Service (AKS)</li>
-                            <li>🔹 GitLab Integration – Automatically triggers Jenkins pipeline on code push</li>
-                            <li>🔹 Pre-Prod Approval Step for enhanced deployment security</li>
-                        </ul><br>
-                        <p>🔗 Project Code Repo: GitLab - <a href="https://lnkd.in/g3XbG2G3" target="_blank" class="text-[#00f2a1]">https://lnkd.in/g3XbG2G3</a></p>
-                    </div>
-                </div>
-                </div>
-        </section>
+            </section>
 
-        <section id="contact" class="py-20 text-center fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-4" data-en="Get In Touch" data-ko="연락하기">Get In Touch</h2>
-            <p class="max-w-xl mx-auto text-gray-300 mb-8" data-en="My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!" data-ko="제 받은 편지함은 항상 열려 있습니다. 질문이 있거나 그냥 인사하고 싶으시면 최선을 다해 답변해 드리겠습니다!">My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!</p>
-            <a href="mailto:niwanthawick@outlook.com" class="gradient-cta inline-block bg-gradient-to-r from-[#00f2a1] to-[#00c6ff] text-[#0a192f] font-bold py-3 px-8 rounded-md hover:scale-105 transition-transform" data-en="Say Hello" data-ko="인사하기">Say Hello</a>
-        </section>
-    </main>
+            <section class="section-pad cert-section" id="certifications">
+                <div class="container">
+                    <div class="section-header reveal" style="margin-bottom: 60px;">
+                        <div class="sec-bg-text" data-i18n="bg_cert">CERTS</div>
+                        <div class="sec-subtitle" data-i18n="sub_cert">/01.5 CREDENTIALS</div>
+                        <h2 class="sec-title font-display"><span data-i18n="title_cert_1">Verified</span> <span style="color:var(--text-main)" data-i18n="title_cert_2">Expertise</span></h2>
+                    </div>
+                    
+                    <div class="cert-static-grid reveal" id="cert-grid-container">
+                    </div>
+                </div>
+            </section>
 
-    <footer class="py-8 text-center text-gray-500">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="https://linkedin.com/in/niwantha-wickramasingha" target="_blank" class="text-xl hover:text-[#00f2a1] transition-colors"><i class="fab fa-linkedin"></i></a>
-            <a href="https://kloudschool.com" target="_blank" class="text-xl hover:text-[#00f2a1] transition-colors"><i class="fas fa-globe"></i></a>
+            <section id="experience" class="section-pad experience-section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <div class="sec-bg-text" data-i18n="bg_exp">TIMELINE</div>
+                        <div class="sec-subtitle" data-i18n="sub_exp">/02 CAREER</div>
+                        <h2 class="sec-title font-display"><span data-i18n="title_exp_1">Execution</span> <span style="color:var(--text-main)" data-i18n="title_exp_2">Log</span></h2>
+                    </div>
+                    
+                    <div class="timeline" id="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-progress" id="timeline-progress"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section-pad projects-section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <div class="sec-bg-text" data-i18n="bg_proj">DEPLOYMENTS</div>
+                        <div class="sec-subtitle" data-i18n="sub_proj">/03 PROJECTS</div>
+                        <h2 class="sec-title font-display"><span data-i18n="title_proj_1">Live</span> <span style="color:var(--text-main)" data-i18n="title_proj_2">Architecture</span></h2>
+                    </div>
+                    
+                    <div class="project-grid" id="project-grid-container">
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section-pad contact-section">
+                <div class="container reveal">
+                    <div class="section-header">
+                        <div class="sec-subtitle" data-i18n="sub_contact">/04 CONNECT</div>
+                    </div>
+                    <div class="terminal-contact">
+                        <div class="term-head">
+                            <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+                            <div class="term-title">contact_module.sh</div>
+                        </div>
+                        <div class="term-body" id="term-body">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="container">
+                    <div class="footer-socials">
+                        <a href="https://linkedin.com/in/niwantha-wickramasingha" target="_blank" class="magnetic-target"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://kloudschool.com" target="_blank" class="magnetic-target"><i class="fas fa-globe"></i></a>
+                    </div>
+                    <p class="footer-text font-display" data-i18n="footer_text">Engineered & Deployed by Niwantha Wickramasingha ☕</p>
+                </div>
+            </footer>
+
         </div>
-        <div class="footer-credit-wrapper glass-effect reflection-effect">
-             <p class="footer-credit" data-en="Designed & Built by Niwantha Wickramasingha ☕" data-ko="디자인 및 제작: Niwantha Wickramasingha ☕">Designed & Built by Niwantha Wickramasingha ☕</p>
-        </div>
-    </footer>
+    </main> 
 
-    <div id="project-modal" class="project-modal hidden">
-        <div class="project-modal-content glass-effect">
-            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
-            <div class="modal-image-container">
-                <img id="modal-image" src="" alt="Project Image">
-            </div>
-            <div class="modal-text-container">
-                <h2 id="modal-title" class="text-3xl font-bold text-white mb-4"></h2>
-                <div id="modal-description" class="text-gray-300 leading-relaxed"></div>
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="close-modal magnetic-target" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <h2 class="m-title font-display" id="m-title">Project Title</h2>
+                <img id="m-img" src="" alt="Project" class="m-img">
+                <div class="m-desc font-display" id="m-desc">
+                    Project Details here...
+                </div>
             </div>
         </div>
-        <button id="modal-prev-btn" class="modal-nav-btn left-2 md:left-4"><i class="fas fa-chevron-left"></i></button>
-        <button id="modal-next-btn" class="modal-nav-btn right-2 md:right-4"><i class="fas fa-chevron-right"></i></button>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
